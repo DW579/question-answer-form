@@ -26,6 +26,22 @@
             float: right;
             margin-left: 5px;
         }
+        .editSection {
+          padding: 10px;
+          border-radius: 15px;
+        }
+        .multipleChoice {
+          margin-bottom: 10px;
+          width: 49%;
+        }
+        .answerInput {
+          margin-bottom: 10px;
+          width: 49%;
+          float: right;
+        }
+        label {
+          width: 100%;
+        }
     </style>
 </head>
 
@@ -44,11 +60,42 @@
               <button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button>
               <button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button>
             </div>
-            <div class='card-block'><p class='card-text'>Some quick example text to build on the card title</p>
+            <div class='card-block'>
+              <p class='card-text'>Some quick example text to build on the card title</p>
             </div>
-            <div class='editSection' value='" + count +"' style='display: none;'>
-              <p>You can see me!</p>
+            <div class="card-block">
+              <form class='editSection' value='" + count +"' style='display: block; background-color: grey;'>
+                <div class="form-group">
+                  <label for="comment">Question:</label>
+                  <textarea class="form-control" id="comment"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="sel1">Answers:</label>
+                  <input type="text" class="form-control answerInput">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                  <select class="form-control multipleChoice" id="sel1">
+                    <option>May Select</option>
+                    <option>Must Select</option>
+                    <option>Terminate if Select</option>
+                  </select>
+                  <input type="text" class="form-control answerInput">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                  <select class="form-control multipleChoice" id="sel1">
+                    <option>May Select</option>
+                    <option>Must Select</option>
+                    <option>Terminate if Select</option>
+                  </select>
+                  <input type="text" class="form-control answerInput">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                  <select class="form-control multipleChoice" id="sel1">
+                    <option>May Select</option>
+                    <option>Must Select</option>
+                    <option>Terminate if Select</option>
+                  </select>
+                </div>
+              </form>
             </div>
+
           </div>
 
         </div>
