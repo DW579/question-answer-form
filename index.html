@@ -5,8 +5,8 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <style>
-        .navbar {
-            margin-bottom: 12px;
+        .container-fluid {
+            margin-top: 80px;
         }
 
         #quickSearch {
@@ -14,8 +14,7 @@
         }
 
         #addNew {
-            position: fixed;
-            margin-top: 48%;
+            float: right;
         }
 
         #editButton {
@@ -58,14 +57,15 @@
 
 <body>
 
-    <nav class="navbar navbar-light bg-faded">
-        <h1 class="navbar-brand mb-0">Discuss.io Assignment</h1>
+    <nav class="navbar navbar-light bg-faded navbar-fixed-top">
+        <h1 class="navbar-brand">Discuss.io Assignment</h1>
+          <button id="addNew" class="btn btn-success" type="submit">Add Question</button>
     </nav>
 
     <div class="container-fluid">
         <div class="col-md-7 offset-md-1" id="questions">
           <!-- I will need to get rid of this section after creating the editing section for the cards -->
-          <div id='question' value='"+ count +"' class='card'>
+          <!-- <div id='question' value='"+ count +"' class='card'>
             <div class='card-header'>
               <h4>Question " + count + "</h4>
               <button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button>
@@ -123,18 +123,13 @@
                 <button type='save' class='btn btn-primary'>Save</button>
               </form>
             </div>
-          </div>
+          </div> -->
 
         </div>
 
         <div class="col-md-3 offset-md-1">
             <div class="row" id="quickSearch">
                 <h5>Quick Search</h5>
-            </div>
-            <div class="row">
-                <div class="col-md-3 offset-md-4">
-                    <button id="addNew" class="btn btn-success" type="submit">Add Question</button>
-                </div>
             </div>
         </div>
     </div>
@@ -169,7 +164,7 @@
 
             $("#addNew").click(function() {
                 $("#questions").append(
-                    "<div id='question' value='"+ count +"' class='card'><div class='card-header'><h4>Question " + count + "</h4><button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button><button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button></div><div class='card-block'><p class='card-text'>Some quick example text to build on the card title</p></div><div class='card-block edit' style='display: none;'><form class='editSection' value='" + count +"' style='background-color: grey;'><div class='form-group'><label for='comment'>Question:</label><textarea class='form-control' id='comment'></textarea></div><div class='form-group'><label for='sel1'>Answers:</label><input type='text' class='form-control answerInput'><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><a id='addAnswer'>Add new answer</a></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Allow None of the Above</label><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Shuffle Option Order</label></div><button type='cancel' class='btn btn-active'>Cancel</button><button type='save' class='btn btn-primary'>Save</button></form></div></div>"
+                    "<div id='question' value='"+ count +"' class='card'><div class='card-header'><h4>Question " + count + "</h4><button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button><button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button></div><div class='card-block'><p class='card-text'>Some quick example text to build on the card title</p></div><div class='card-block edit' style='display: none;'><form class='editSection' value='" + count +"' style='background-color: grey;'><div class='form-group'><label for='comment'>Question:</label><textarea class='form-control' id='comment'></textarea></div><div class='form-group'><label for='sel1'>Answers:</label><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><a id='addAnswer'>Add new answer</a></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Allow None of the Above</label><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Shuffle Option Order</label></div><button type='cancel' class='btn btn-active'>Cancel</button><button type='save' class='btn btn-primary'>Save</button></form></div></div>"
                 );
                 $("#quickSearch").append("<p>Question " + count + "</p>");
                 count++;
