@@ -74,66 +74,7 @@
 
     <div class="container-fluid">
         <div class="col-md-7 offset-md-1" id="questions">
-          <!-- I will need to get rid of this section after creating the editing section for the cards -->
-          <!-- <div id='question' value='"+ count +"' class='card'>
-            <div class='card-header'>
-              <h4>Question " + count + "</h4>
-              <button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button>
-              <button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button>
-            </div>
-            <div class='card-block mainQuestion'>
-              <p class='card-text'>Some quick example text to build on the card title</p>
-            </div>
-            <div class='card-block edit'>
-              <form class='editSection' value='" + count +"' style='display: block; background-color: grey;'>
-                <div class='form-group questionText'>
-                  <label for='comment'>Question:</label>
-                  <textarea class='form-control' id='comment'></textarea>
-                </div>
-                <div class='form-group answers'>
-                  <label for='sel1'>Answers:</label>
-                  <input type='text' class='form-control answerInput'>
-                  <a class='deleteAnswer'>Delete</a>
-                  <select class='form-control multipleChoice'>
-                    <option>May Select</option>
-                    <option>Must Select</option>
-                    <option>Terminate if Select</option>
-                  </select>
-                  <input type='text' class='form-control answerInput'>
-                  <a class='deleteAnswer'>Delete</a>
-                  <select class='form-control multipleChoice'>
-                    <option>May Select</option>
-                    <option>Must Select</option>
-                    <option>Terminate if Select</option>
-                  </select>
-                  <input type='text' class='form-control answerInput'>
-                  <a class='deleteAnswer'>Delete</a>
-                  <select class='form-control multipleChoice'>
-                    <option>May Select</option>
-                    <option>Must Select</option>
-                    <option>Terminate if Select</option>
-                  </select>
-                  <a id="appendHere"></a>
-                  <button type='button' id='addAnswer'>Add new answer</button>
-                </div>
-                <div class='form-check'>
-                  <label class='form-check-label'>
-                    <input class='form-check-input' type='checkbox' value=''>
-                    Allow "None of the Above"
-                  </label>
-                  <label class='form-check-label'>
-                    <input class='form-check-input' type='checkbox' value=''>
-                    Shuffle Option Order
-                  </label>
-                </div>
-                <button type='cancel' class='btn btn-active cancelButton'>Cancel</button>
-                <button type='save' class='btn btn-primary saveButton'>Save</button>
-              </form>
-            </div>
-          </div> -->
-
         </div>
-
         <div class="col-md-3 offset-md-1">
             <div class="row" id="quickSearch">
                 <h5>Quick Search</h5>
@@ -141,37 +82,23 @@
         </div>
     </div>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-                    <h4 class="modal-title" id="myModalLabel">Delete Question</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Do you want to delete this question?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger deleteCard">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <script type="text/javascript">
         $(document).ready(function() {
             var count = 1;
 
-            $('#myModal').on('shown.bs.modal', function() {
-                $('#myInput').focus();
+            $( "div.selector" ).droppable({
+              accept: "div.special"
             });
+
+            var accept = $( "div.selector" ).droppable( "option", "accept" );
+
+            $( "div.selector" ).droppable( "option", "accept", "div.special" );
 
             $("#addNew").click(function() {
                 $("#questions").append(
-                    "<a class='anchor' id='question"+ count +"'></a><div id='question' value='"+ count +"' class='card'><div class='card-header'><strong>Question " + count + "</strong><button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button><button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button></div><div class='card-block mainQuestion'><p class='card-text'>Some quick example text to build on the card title</p></div><div class='card-block edit' style='display: none;'><form class='editSection' value='" + count +"' style='background-color: grey;'><div class='form-group questionText'><label for='comment'>Question:</label><textarea class='form-control' id='comment'></textarea></div><div class='form-group answers'><label>Answers:</label><input id='input1' type='text' class='form-control answerInput'><button type='button' class='btn btn-danger deleteAnswer'>Delete</button><select class='form-control multipleChoice'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input id='input2' type='text' class='form-control answerInput'><button type='button' class='btn btn-danger deleteAnswer'>Delete</button><select class='form-control multipleChoice'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input id='input3' type='text' class='form-control answerInput'><button type='button' class='btn btn-danger deleteAnswer'>Delete</button><select class='form-control multipleChoice'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><a id='appendHere'></a><button type='button' class='btn btn-primary' id='addAnswer'>Add new answer</button></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Allow None of the Above</label><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Shuffle Option Order</label></div><button type='button' class='btn btn-active cancelButton'>Cancel</button><button type='button' class='btn btn-primary saveButton'>Save</button></form></div></div>"
+                    "<a class='anchor' id='question"+ count +"'></a><div id='question' value='"+ count +"' class='card selector special'><div class='card-header'><strong>Question " + count + "</strong><button id='deleteButton' type='button' class='btn btn-danger'>Delete</button><button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button></div><div class='card-block mainQuestion'><p class='card-text'>Some quick example text to build on the card title</p></div><div class='card-block edit' style='display: none;'><form class='editSection' value='" + count +"' style='background-color: grey;'><div class='form-group questionText'><label for='comment'>Question:</label><textarea class='form-control' id='comment'></textarea></div><div class='form-group answers'><label>Answers:</label><input id='input1' type='text' class='form-control answerInput'><button type='button' class='btn btn-danger deleteAnswer'>Delete</button><select class='form-control multipleChoice'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input id='input2' type='text' class='form-control answerInput'><button type='button' class='btn btn-danger deleteAnswer'>Delete</button><select class='form-control multipleChoice'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input id='input3' type='text' class='form-control answerInput'><button type='button' class='btn btn-danger deleteAnswer'>Delete</button><select class='form-control multipleChoice'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><a id='appendHere'></a><button type='button' class='btn btn-primary' id='addAnswer'>Add new answer</button></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Allow None of the Above</label><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Shuffle Option Order</label></div><button type='button' class='btn btn-active cancelButton'>Cancel</button><button type='button' class='btn btn-primary saveButton'>Save</button></form></div><div class='modal fade' id='myModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'><div class='modal-dialog' role='document'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button><h4 class='modal-title' id='myModalLabel'>Delete Question</h4></div><div class='modal-body'><p>Do you want to delete this question?</p></div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button><button type='button' class='btn btn-danger deleteCard'>Delete</button></div></div></div></div></div>"
                 );
                 $("#quickSearch").append("<a href='#question"+ count +"'>Question " + count + "</a></br>");
                 count++;
@@ -201,12 +128,17 @@
               $(this).remove();
             });
 
-            
+            $("#questions").on("click", "#question div.card-header button#deleteButton", function() {
+              $(this).parents("div#question").remove();
+            });
+
+
         });
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 </body>
 
 </html>
