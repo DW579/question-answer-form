@@ -70,6 +70,19 @@
         </div>
     </div>
 
+    <!-- <div id='question' value='"+ count +"' class='card'>
+      <div class='card-header'>
+        <h4>Question " + count + "</h4>
+        <button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button>
+        <button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button>
+      </div>
+      <div class='card-block'><p class='card-text'>Some quick example text to build on the card title</p>
+      </div>
+      <div class='editSection' value='" + count +"' style='display: none;'>
+        <p>You can see me!</p>
+      </div>
+    </div> -->
+
     <script type="text/javascript">
         $(document).ready(function() {
             var count = 1;
@@ -80,15 +93,16 @@
 
             $("#addNew").click(function() {
                 $("#questions").append(
-                    "<div id='question' value='"+ count +"' class='card'><div class='card-header'><strong>Question " + count + "</strong><button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button><button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button></div><div class='card-block'><h4 class='card-title'></h4><p class='card-text'>Some quick example text to build on the card title</p></div><div class='editSection' value='" + count +"' style='display: none;'><p>You can see me!</p></div></div>"
+                    "<div id='question' value='"+ count +"' class='card'><div class='card-header'><strong>Question " + count + "</strong><button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button><button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button></div><div class='card-block'><p class='card-text'>Some quick example text to build on the card title</p></div><div class='editSection' value='" + count +"' style='display: none;'><p>You can see me!</p></div></div>"
                 );
                 $("#quickSearch").append("<p>Question " + count + "</p>");
                 count++;
             });
 
-            $( "#questions" ).on("click", "#question button.editButton", function() {
+            $( "#questions" ).on("click", "#question div.card-header button.editButton", function() {
               console.log($(this).val());
-              $(this).siblings("div.editSection").toggle(500);
+              console.log($(this).parents().next().next());
+              $(this).parents().siblings("div.editSection").toggle(500);
             });
         });
     </script>
