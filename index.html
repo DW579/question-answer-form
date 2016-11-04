@@ -42,12 +42,11 @@
         }
         .answerInput {
           margin-bottom: 10px;
-          width: 59%;
+          width: 55%;
           float: left;
         }
         .deleteAnswer {
-          margin-top: 7px;
-          width: 10%;
+          width: 15%;
           float: right;
         }
         label {
@@ -172,7 +171,7 @@
 
             $("#addNew").click(function() {
                 $("#questions").append(
-                    "<a class='anchor' id='question"+ count +"'></a><div id='question' value='"+ count +"' class='card'><div class='card-header'><strong>Question " + count + "</strong><button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button><button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button></div><div class='card-block mainQuestion'><p class='card-text'>Some quick example text to build on the card title</p></div><div class='card-block edit' style='display: none;'><form class='editSection' value='" + count +"' style='background-color: grey;'><div class='form-group questionText'><label for='comment'>Question:</label><textarea class='form-control' id='comment'></textarea></div><div class='form-group answers'><label for='sel1'>Answers:</label><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><a id='appendHere'></a><button type='button' id='addAnswer'>Add new answer</button></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Allow None of the Above</label><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Shuffle Option Order</label></div><button type='button' class='btn btn-active cancelButton'>Cancel</button><button type='button' class='btn btn-primary saveButton'>Save</button></form></div></div>"
+                    "<a class='anchor' id='question"+ count +"'></a><div id='question' value='"+ count +"' class='card'><div class='card-header'><strong>Question " + count + "</strong><button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button><button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button></div><div class='card-block mainQuestion'><p class='card-text'>Some quick example text to build on the card title</p></div><div class='card-block edit' style='display: none;'><form class='editSection' value='" + count +"' style='background-color: grey;'><div class='form-group questionText'><label for='comment'>Question:</label><textarea class='form-control' id='comment'></textarea></div><div class='form-group answers'><label for='sel1'>Answers:</label><input type='text' class='form-control answerInput'><button type='button' class='btn btn-danger deleteAnswer'>Delete</button><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><button type='button' class='btn btn-danger deleteAnswer'>Delete</button><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><button type='button' class='btn btn-danger deleteAnswer'>Delete</button><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><a id='appendHere'></a><button type='button' class='btn btn-primary' id='addAnswer'>Add new answer</button></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Allow None of the Above</label><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Shuffle Option Order</label></div><button type='button' class='btn btn-active cancelButton'>Cancel</button><button type='button' class='btn btn-primary saveButton'>Save</button></form></div></div>"
                 );
                 $("#quickSearch").append("<a href='#question"+ count +"'>Question " + count + "</a></br>");
                 count++;
@@ -194,9 +193,12 @@
             });
 
             $("#questions").on("click", "#question div.card-block.edit form div.form-group.answers button#addAnswer", function() {
-              console.log($(this).parents("div.form-group.answers"));
-              $($(this).parents("div.form-group.answers").children("a#appendHere")).append("<input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select>");
+              $($(this).parents("div.form-group.answers").children("a#appendHere")).append("<input type='text' class='form-control answerInput'><button type='button' class='btn btn-danger deleteAnswer'>Delete</button><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select>");
             });
+
+            $("#questions").on("click", "#question div.card-block.edit form div.form-group.answers button.deleteAnswer", function() {
+              console.log("I clicked the delete button");
+            })
         });
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
