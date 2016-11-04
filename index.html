@@ -37,7 +37,22 @@
 
     <div class="container-fluid">
         <div class="col-md-7 offset-md-1" id="questions">
+          <!-- I will need to get rid of this section after creating the editing section for the cards -->
+          <div id='question' value='"+ count +"' class='card'>
+            <div class='card-header'>
+              <h4>Question " + count + "</h4>
+              <button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button>
+              <button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button>
+            </div>
+            <div class='card-block'><p class='card-text'>Some quick example text to build on the card title</p>
+            </div>
+            <div class='editSection' value='" + count +"' style='display: none;'>
+              <p>You can see me!</p>
+            </div>
+          </div>
+
         </div>
+
         <div class="col-md-3 offset-md-1">
             <div class="row" id="quickSearch">
                 <h5>Quick Search</h5>
@@ -69,19 +84,6 @@
             </div>
         </div>
     </div>
-
-    <!-- <div id='question' value='"+ count +"' class='card'>
-      <div class='card-header'>
-        <h4>Question " + count + "</h4>
-        <button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button>
-        <button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button>
-      </div>
-      <div class='card-block'><p class='card-text'>Some quick example text to build on the card title</p>
-      </div>
-      <div class='editSection' value='" + count +"' style='display: none;'>
-        <p>You can see me!</p>
-      </div>
-    </div> -->
 
     <script type="text/javascript">
         $(document).ready(function() {
