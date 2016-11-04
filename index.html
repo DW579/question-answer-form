@@ -82,7 +82,7 @@
               <button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button>
               <button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button>
             </div>
-            <div class='card-block'>
+            <div class='card-block mainQuestion'>
               <p class='card-text'>Some quick example text to build on the card title</p>
             </div>
             <div class='card-block edit'>
@@ -91,34 +91,31 @@
                   <label for='comment'>Question:</label>
                   <textarea class='form-control' id='comment'></textarea>
                 </div>
-                <div class='form-group'>
+                <div class='form-group answers'>
                   <label for='sel1'>Answers:</label>
-
-
                   <input type='text' class='form-control answerInput'>
                   <a class='deleteAnswer'>Delete</a>
-                  <select class='form-control multipleChoice' id='sel1'>
-                    <option>May Select</option>
-                    <option>Must Select</option>
-                    <option>Terminate if Select</option>
-                  </select>
-
-
-                  <input type='text' class='form-control answerInput'>
-                  <a class='deleteAnswer'>Delete</a>
-                  <select class='form-control multipleChoice' id='sel1'>
+                  <select class='form-control multipleChoice'>
                     <option>May Select</option>
                     <option>Must Select</option>
                     <option>Terminate if Select</option>
                   </select>
                   <input type='text' class='form-control answerInput'>
                   <a class='deleteAnswer'>Delete</a>
-                  <select class='form-control multipleChoice' id='sel1'>
+                  <select class='form-control multipleChoice'>
                     <option>May Select</option>
                     <option>Must Select</option>
                     <option>Terminate if Select</option>
                   </select>
-                  <a id='addAnswer'>Add new answer</a>
+                  <input type='text' class='form-control answerInput'>
+                  <a class='deleteAnswer'>Delete</a>
+                  <select class='form-control multipleChoice'>
+                    <option>May Select</option>
+                    <option>Must Select</option>
+                    <option>Terminate if Select</option>
+                  </select>
+                  <a id="appendHere"></a>
+                  <button type='button' id='addAnswer'>Add new answer</button>
                 </div>
                 <div class='form-check'>
                   <label class='form-check-label'>
@@ -175,24 +172,30 @@
 
             $("#addNew").click(function() {
                 $("#questions").append(
-                    "<a class='anchor' id='question"+ count +"'></a><div id='question' value='"+ count +"' class='card'><div class='card-header'><strong>Question " + count + "</strong><button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button><button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button></div><div class='card-block'><p class='card-text'>Some quick example text to build on the card title</p></div><div class='card-block edit' style='display: none;'><form class='editSection' value='" + count +"' style='background-color: grey;'><div class='form-group questionText'><label for='comment'>Question:</label><textarea class='form-control' id='comment'></textarea></div><div class='form-group'><label for='sel1'>Answers:</label><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><a id='addAnswer'>Add new answer</a></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Allow None of the Above</label><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Shuffle Option Order</label></div><button type='button' class='btn btn-active cancelButton'>Cancel</button><button type='button' class='btn btn-primary saveButton'>Save</button></form></div></div>"
+                    "<a class='anchor' id='question"+ count +"'></a><div id='question' value='"+ count +"' class='card'><div class='card-header'><strong>Question " + count + "</strong><button id='deleteButton' type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal'>Delete</button><button id='editButton' value='"+ count +"' type='button' class='editButton btn btn-warning'>Edit</button></div><div class='card-block mainQuestion'><p class='card-text'>Some quick example text to build on the card title</p></div><div class='card-block edit' style='display: none;'><form class='editSection' value='" + count +"' style='background-color: grey;'><div class='form-group questionText'><label for='comment'>Question:</label><textarea class='form-control' id='comment'></textarea></div><div class='form-group answers'><label for='sel1'>Answers:</label><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select><a id='appendHere'></a><button type='button' id='addAnswer'>Add new answer</button></div><div class='form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Allow None of the Above</label><label class='form-check-label'><input class='form-check-input' type='checkbox' value=''>Shuffle Option Order</label></div><button type='button' class='btn btn-active cancelButton'>Cancel</button><button type='button' class='btn btn-primary saveButton'>Save</button></form></div></div>"
                 );
                 $("#quickSearch").append("<a href='#question"+ count +"'>Question " + count + "</a></br>");
                 count++;
             });
 
             $( "#questions" ).on("click", "#question div.card-header button.editButton", function() {
-              console.log($(this).val());
-              console.log($(this).parents().next().next());
               $(this).parents().siblings("div.card-block.edit").toggle(500);
             });
 
             $("#questions").on("click", "#question div.card-block.edit form button.saveButton", function() {
               console.log($(this).siblings("div.form-group.questionText").children("textarea").val());
+              // console.log($(this).parents("div#question").children("div.card-block.mainQuestion").text());
+              $(this).parents("div#question").children("div.card-block.mainQuestion").text($(this).siblings("div.form-group.questionText").children("textarea").val());
+              $(this).parents("div.card-block.edit").toggle(500);
             });
 
             $("#questions").on("click", "#question div.card-block.edit form button.cancelButton", function() {
-              console.log("Cancel button was clicked");
+              $(this).parents("div.card-block.edit").toggle(500);
+            });
+
+            $("#questions").on("click", "#question div.card-block.edit form div.form-group.answers button#addAnswer", function() {
+              console.log($(this).parents("div.form-group.answers"));
+              $($(this).parents("div.form-group.answers").children("a#appendHere")).append("<input type='text' class='form-control answerInput'><a class='deleteAnswer'>Delete</a><select class='form-control multipleChoice' id='sel1'><option>May Select</option><option>Must Select</option><option>Terminate if Select</option></select>");
             });
         });
     </script>
