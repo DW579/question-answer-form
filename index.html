@@ -163,15 +163,13 @@
         });
 
         function searchFunction() {
-            var a;
-            var i;
             var input = document.getElementById('searchInput');
             var filter = input.value.toUpperCase();
             var ul = document.getElementById("sort");
             var li = ul.getElementsByTagName('li');
 
-            for (i = 0; i < li.length; i++) {
-                a = li[i].getElementsByTagName("p")[0];
+            for (var i = 0; i < li.length; i++) {
+                var a = li[i].getElementsByTagName("p")[0];
                 if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
                     li[i].style.display = "";
                 } else {
