@@ -2,7 +2,7 @@
 
 Link to the web app: http://swift-smell.surge.sh/
 
-Built with:
+Developed with:
 * HTML
 * CSS
 * Javascript
